@@ -4,13 +4,15 @@
 {% block content %}
 
     <!-- Hero Section-->
-    <section style="background: url({% static 'img/hero.jpg' %}); background-size: cover; background-position: center center" class="hero">
+    <section style="background: url({% static 'img/header.jpg' %}); background-size: cover; background-position: center center" class="hero">
       <div class="container">
         <div class="row">
           <div class="col-lg-7">
-            <h1>Bootstrap 4 Blog - A free template by Bootstrap Temple</h1><a href="#" class="hero-link">Discover More</a>
+            <h1>We should learn not for ourself rather for the others to grow together</h1>
+{#              <a href="#" class="hero-link">Discover More</a>#}
           </div>
-        </div><a href=".intro" class="continue link-scroll"><i class="fa fa-long-arrow-down"></i> Scroll Down</a>
+        </div>
+          <a href=".intro"  class="continue link-scroll"><i style="color:black class="fa fa-long-arrow-down"></i> <span style="color:black;">Scroll Down</span></a>
       </div>
     </section>
     <!-- Intro Section-->
@@ -29,7 +31,7 @@
         <!-- Post-->
         {% for obj in object_list %}
         <div class="row d-flex align-items-stretch">
-          {% if not forloop.first and not forloop.last %}
+          {% if forloop.counter|divisibleby:2  %}
           <div class="image col-lg-5"><img src="{{ obj.thumbnail.url }}" alt="..."></div>
           {% endif %}
           <div class="text col-lg-7">
@@ -55,7 +57,7 @@
               </div>
             </div>
           </div>
-          {% if forloop.first or forloop.last %}
+          {% if not forloop.counter|divisibleby:2  %}
           <div class="image col-lg-5"><img src="{{ obj.thumbnail.url }}" alt="..."></div>
           {% endif %}
         </div>

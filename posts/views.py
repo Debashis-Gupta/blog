@@ -63,7 +63,7 @@ def get_category_count():
 
 
 class IndexView(View):
-    # form = EmailSignupForm()
+    form = EmailSignupForm()
 
     def get(self, request, *args, **kwargs):
         featured = Post.objects.filter(featured=True)
@@ -71,7 +71,7 @@ class IndexView(View):
         context = {
             'object_list': featured,
             'latest': latest,
-            # 'form': self.form
+            'form': self.form
         }
         return render(request, 'index.html', context)
 
