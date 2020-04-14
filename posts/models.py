@@ -24,7 +24,7 @@ class Author(models.Model):
 
 class Category(models.Model):
     title = models.CharField(max_length=20)
-
+    category_picture = models.ImageField()
     def __str__(self):
         return self.title
 
@@ -50,6 +50,7 @@ class Post(models.Model):
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
     thumbnail = models.ImageField()
     categories = models.ManyToManyField(Category)
+    print(categories)
     featured = models.BooleanField()
     previous_post = models.ForeignKey(
         'self', related_name='previous', on_delete=models.SET_NULL, blank=True, null=True)

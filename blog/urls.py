@@ -3,9 +3,10 @@ from django.conf.urls import url
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
-
+from django.contrib.auth import views as auth_views
+from django.contrib.auth.decorators import login_required
 from marketing.views import email_list_signup
-
+from contact.views import contact,message
 from posts.views import (index,
                          search,
     # post_list,
@@ -25,7 +26,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # path('', index),
     path('', IndexView.as_view(), name='home'),
-    path('accounts/profile/', IndexView.as_view(), name='home'),
+    path('accounts/profile/', IndexView.as_view()),
     # path('blog/', post_list, name='post-list'),
     path('blog/', PostListView.as_view(), name='post-list'),
     path('search/', search, name='search'),
@@ -42,7 +43,11 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
 
     #self try categories
-    path('category/<slug:cat>',cat_detail,name='cat-detail')
+    path('category/<slug:cat>',cat_detail,name='cat-detail'),
+
+    #contact
+    path('contact',contact,name="contact"),
+    path('message',message,name="message"),
 
 
 ]

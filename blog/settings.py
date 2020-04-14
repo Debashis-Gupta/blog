@@ -25,7 +25,7 @@ SECRET_KEY = '^fb*5=*$p5%$_v$*g!_+7zn=n570qtcgox7@-3wv(n6a#8*-^q'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','192.168.0.107']
+ALLOWED_HOSTS = ['127.0.0.1','f07a826b.ngrok.io','9e01cd04.ngrok.io']
 
 
 # Application definition
@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'tinymce',
 
     'marketing',
-    'posts'
+    'posts',
+    'contact',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

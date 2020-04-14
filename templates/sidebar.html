@@ -40,6 +40,7 @@
     <div class="item d-flex justify-content-between">
 
         <a  href="/category/{{ cat.categories__title }}">{{ cat.categories__title }}</a><span>{{ cat.categories__title__count }}</span>
+        <img src="{{ cat.category_picture.url }}" alt="">
     </div>
     {% endfor %}
     </div>

@@ -3,12 +3,12 @@ from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.views.generic import View, ListView, DetailView, CreateView, UpdateView, DeleteView
-
+from django.contrib.auth.decorators import login_required
 from marketing.forms import EmailSignupForm
 from marketing.models import Signup
 from .forms import CommentForm, PostForm
-from .models import Post, Author, PostView
-
+from .models import Post, Author, PostView,Category
+from braces.views import LoginRequiredMixin
 
 form = EmailSignupForm()
 
@@ -68,10 +68,14 @@ class IndexView(View):
     def get(self, request, *args, **kwargs):
         featured = Post.objects.filter(featured=True)
         latest = Post.objects.order_by('-timestamp')[0:3]
+
+        category = Category.objects.all()
+
         context = {
             'object_list': featured,
             'latest': latest,
-            'form': self.form
+            'form': self.form,
+            'category':category,
         }
         return render(request, 'index.html', context)
 
@@ -239,11 +243,11 @@ class PostDetailView(DetailView):
 #     }
 #     return render(request, 'post.html', context)
 #
-
-class PostCreateView(CreateView):
+class PostCreateView(LoginRequiredMixin,CreateView):
     model = Post
     template_name = 'post_create.html'
     form_class = PostForm
+
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -276,7 +280,7 @@ def post_create(request):
     return render(request, "post_create.html", context)
 
 
-class PostUpdateView(UpdateView):
+class PostUpdateView(LoginRequiredMixin,UpdateView):
     model = Post
     template_name = 'post_create.html'
     form_class = PostForm
@@ -316,7 +320,7 @@ def post_update(request, id):
     return render(request, "post_create.html", context)
 
 
-class PostDeleteView(DeleteView):
+class PostDeleteView(LoginRequiredMixin,DeleteView):
     model = Post
     success_url = '/blog'
     template_name = 'post_confirm_delete.html'
