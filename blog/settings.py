@@ -25,7 +25,7 @@ SECRET_KEY = '^fb*5=*$p5%$_v$*g!_+7zn=n570qtcgox7@-3wv(n6a#8*-^q'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','f07a826b.ngrok.io','9e01cd04.ngrok.io']
+ALLOWED_HOSTS = ['127.0.0.1','de73de28.ngrok.io']
 
 
 # Application definition
@@ -39,9 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
 
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
 
     'crispy_forms',
     'tinymce',
@@ -49,6 +46,10 @@ INSTALLED_APPS = [
     'marketing',
     'posts',
     'contact',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -68,7 +69,7 @@ ROOT_URLCONF = 'blog.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'),os.path.join(BASE_DIR, 'templates','account')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -178,4 +179,11 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend'
 )
 
-SITE_ID = 1
+SITE_ID = 2
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST='smtp.gmail.com'
+EMAIL_HOST_USER='debashisguptaruet@gmail.com'
+EMAIL_HOST_PASSWORD='deb1503073'
+EMAIL_USE_TLS=True
+EMAIL_PORT=587

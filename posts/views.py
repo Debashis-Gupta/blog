@@ -9,6 +9,7 @@ from marketing.models import Signup
 from .forms import CommentForm, PostForm
 from .models import Post, Author, PostView,Category
 from braces.views import LoginRequiredMixin
+from django.contrib.auth.mixins import PermissionRequiredMixin
 
 form = EmailSignupForm()
 
@@ -243,8 +244,9 @@ class PostDetailView(DetailView):
 #     }
 #     return render(request, 'post.html', context)
 #
-class PostCreateView(LoginRequiredMixin,CreateView):
+class PostCreateView(PermissionRequiredMixin,CreateView):
     model = Post
+    permission_required = 'post_create'
     template_name = 'post_create.html'
     form_class = PostForm
 
@@ -280,8 +282,9 @@ def post_create(request):
     return render(request, "post_create.html", context)
 
 
-class PostUpdateView(LoginRequiredMixin,UpdateView):
+class PostUpdateView(PermissionRequiredMixin,UpdateView):
     model = Post
+    permission_required = 'post-update'
     template_name = 'post_create.html'
     form_class = PostForm
 
@@ -297,31 +300,33 @@ class PostUpdateView(LoginRequiredMixin,UpdateView):
             'pk': form.instance.pk
         }))
 
+#
+# def post_update(request, id):
+#     title = 'Update'
+#
+#     post = get_object_or_404(Post, id=id)
+#     form = PostForm(
+#         request.POST or None,
+#         request.FILES or None,
+#         instance=post)
+#     author = get_author(request.user)
+#     if request.method == "POST":
+#         if form.is_valid():
+#             form.instance.author = author
+#             form.save()
+#             return redirect(reverse("post-detail", kwargs={
+#                 'id': form.instance.id
+#             }))
+#     context = {
+#         'title': title,
+#         'form': form
+#     }
+#     return render(request, "post_create.html", context)
+#
 
-def post_update(request, id):
-    title = 'Update'
-    post = get_object_or_404(Post, id=id)
-    form = PostForm(
-        request.POST or None,
-        request.FILES or None,
-        instance=post)
-    author = get_author(request.user)
-    if request.method == "POST":
-        if form.is_valid():
-            form.instance.author = author
-            form.save()
-            return redirect(reverse("post-detail", kwargs={
-                'id': form.instance.id
-            }))
-    context = {
-        'title': title,
-        'form': form
-    }
-    return render(request, "post_create.html", context)
-
-
-class PostDeleteView(LoginRequiredMixin,DeleteView):
+class PostDeleteView(PermissionRequiredMixin,DeleteView):
     model = Post
+    permission_required = 'post - delete'
     success_url = '/blog'
     template_name = 'post_confirm_delete.html'
 
