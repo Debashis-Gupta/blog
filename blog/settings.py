@@ -42,7 +42,7 @@ INSTALLED_APPS = [
 
     'crispy_forms',
     'tinymce',
-
+    'portfolio',
     'marketing',
     'posts',
     'contact',

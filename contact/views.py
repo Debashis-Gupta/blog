@@ -20,7 +20,7 @@ from django.contrib.sites.models import Site
 
 
 # Create your views here.
-@allowed_users(allowed_roles=['admin'])
+# @allowed_users(allowed_roles=['admin'])
 def contact(request):
     if request.method == 'POST':
         contact = Contact()

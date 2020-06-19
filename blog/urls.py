@@ -8,7 +8,7 @@ from django.contrib.auth import views as auth_views
 from django.contrib.auth.decorators import login_required, permission_required
 from marketing.views import email_list_signup
 from contact.views import contact,message,loginPage,register,logoutUser,ActivateAccountView
-
+from portfolio.views import portfolio
 from posts.views import (index,
                          search,
     # post_list,
@@ -55,8 +55,9 @@ urlpatterns = [
     path('logout',logoutUser,name='logout'),
 
 #     Email activation
-    path('activate/<uid>/<token>',ActivateAccountView.as_view(),name='activate')
-
+    path('activate/<uid>/<token>',ActivateAccountView.as_view(),name='activate'),
+#  portfolio
+    path('portfolio',portfolio,name='portfolio')
 ]
 
 if settings.DEBUG:
