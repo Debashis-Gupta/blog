@@ -25,7 +25,7 @@ SECRET_KEY = '^fb*5=*$p5%$_v$*g!_+7zn=n570qtcgox7@-3wv(n6a#8*-^q'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','de73de28.ngrok.io']
+ALLOWED_HOSTS = ['127.0.0.1','4e83c1e15113.ngrok.io']
 
 
 # Application definition
@@ -49,11 +49,21 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'ckeditor',
+    'ckeditor_uploader',
 
 ]
-
+CKEDITOR_UPLOAD_PATH='uploads/'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
-
+CKEDITOR_CONFIGS={
+    'default':{
+        'toolbar':'full',
+    'extraPlugins': 'codesnippet',
+    },
+    'special':{
+        'toolbar':'Basic',
+    }
+}
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

@@ -2,7 +2,8 @@ from tinymce.models import HTMLField
 from django.db import models
 from django.contrib.auth import get_user_model
 from django.urls import reverse
-
+from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
 User = get_user_model()
 
 
@@ -42,9 +43,10 @@ class Comment(models.Model):
 
 class Post(models.Model):
     title = models.CharField(max_length=100)
-    overview = models.TextField()
+    overview = RichTextField(blank=True,null=True,config_name='special')
     timestamp = models.DateTimeField(auto_now_add=True)
-    content = HTMLField()
+
+    content = RichTextUploadingField(blank=True,null=True)
     # comment_count = models.IntegerField(default = 0)
     # view_count = models.IntegerField(default = 0)
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
