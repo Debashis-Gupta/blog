@@ -2,8 +2,9 @@
 {% load static %}
 
 {% block content %}
-
-<p>Here shows category</p>
+{% if cat_list == None %}
+<h2 style="margin:50px">There is no post yets. Please stay tune to keep yourself update.</h2>
+{% endif %}
 {#{% for obj in cat_list %}#}
 {#    <p>{{ obj.title }}</p>#}
 {#{% endfor %}#}

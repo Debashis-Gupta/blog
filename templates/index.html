@@ -25,19 +25,24 @@
         </div>
     </section>
     <!-- Intro Section-->
-    <section class="intro">
+    <section class="intro" style="background: #d0faeb;" data-aos="fade-in">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-8">
-                    <h2 class="h3">Some great intro here</h2>
-                    <p class="text-big">Place a nice <strong>introduction</strong> here <strong>to catch reader's
-                        attention</strong>. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud nisi
-                        ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderi.</p>
+            <div class="row" data-aos="fade-right">
+                <div class="col-lg-8 col-md-6 col-sm-12">
+                    <h2 class="h3" style="color: chocolate;">Who Am I <strong style="color: #32e1b4;">?</strong></h2>
+                    <p class="text-small" style="color: darkred;/*! font-size: 0.9rem; */margin: 50px;">
+                        Hi I am Debashis Gupta a full stack developer and tech enthusiastic who admires
+                        the importance of common platform for knowledge sharing. As i am from a CS background 
+                        i create this web platform to spread the wisdom of universe as much i can. To know me well
+                        please <strong style="color: blue;">click</strong> the button below. 
+                    </p>
+                    <button class="btn btn-info know_me" ><a href="{% url 'portfolio' %}">Know Me</a></button>
                 </div>
+                
             </div>
         </div>
     </section>
+    
 {#    <section class="featured-posts no-padding-top">#}
 {#        <div class="container">#}
 {#            <!-- Post-->#}
@@ -84,20 +89,38 @@
     {# {% for obj in category %}#}
     {#                     <img src="{{ obj.category_picture.url }}" alt="">#}
 
-    <section style="background-size: cover; background-position: center bottom" class="divider gallery">
-        <div class="container">
-            <p style="color: black;">Here will be all catelogs</p>
+    <section>
+        <div class="container" data-aos="zoom-in">
+            <h2 style="color: black;margin-bottom:50px;">Look At The Categories</h2>
             {#        start of card style     #}
                 <div class="row">
                     {% for obj in category %}
-                        <div class="mix col-lg-4 col-md-4 col-sm-4">
-                            <div class="item">
-                                <a href="/category/{{ obj.title }}" class="image">
-                                    <img src="{{ obj.category_picture.url }}" alt="..." class="img-fluid">
-                                    <div class="overlay d-flex align-items-center justify-content-center">
-                                        <p>{{ obj.title }}</p>
+                        <div class="col-lg-4 col-md-4 col-sm-12">
+                            
+                            <div class="categoryCat">
+                                <img class="categoryCat-image" src="{{ obj.category_picture.url }}"/>
+                                <!-- <hr class="styled-hr" /> -->
+                                <p class="categoryCat-title">{{ obj.title }}</p>
+                               
+                                <div class="cate_colors">
+                                  <span class="color1">&#8226;</span>
+                                  <span class="color2">&#8226;</span>
+                                  <span class="color3">&#8226;</span>
+                                  <span class="color4">&#8226;</span>
+                                  <span class="color5">&#8226;</span>
+                                  <span class="color6">&#8226;</span>
+                                  <span class="color7">&#8226;</span>
+                                  <span class="color8">&#8226;</span>
                                 </div>
-                                </a>
+                               
+                                <button class="buton hvr-grow">
+                                    <a href="/category/{{ obj.cat_url }}">
+                                        Explore!
+                                    </a>
+                                </button>
+                                 
+                               
+                               
                             </div>
                         </div>
                     {% endfor %}
@@ -113,11 +136,11 @@
     <!-- Latest Posts -->
     <section class="latest-posts">
         <div class="container">
-            <header>
+            <header data-aos="fade-left">
                 <h2>Latest from the blog</h2>
-                <p class="text-big">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                <!-- <p class="text-big">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
             </header>
-            <div class="row">
+            <div class="row" data-aos="fade-right">
                 {% for obj in latest %}
                     <div class="post col-md-4">
                         <div class="post-thumbnail"><a href="{{ obj.get_absolute_url }}"><img
@@ -133,7 +156,7 @@
                             </div>
                             <a href="{{ obj.get_absolute_url }}">
                                 <h3 class="h4">{{ obj.title }}</h3></a>
-                            <p class="text-muted">{{ obj.overview|linebreaks|truncatechars:200 }}</p>
+                            <p class="text-muted">{{ obj.overview|safe|linebreaks|truncatechars:200 }}</p>
                         </div>
                     </div>
                 {% endfor %}
@@ -144,11 +167,11 @@
     <section class="newsletter no-padding-top">
         <div class="container">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12" data-aos="zoom-out">
                     <h3 class="text-bold text-blue">Subscribe </h3>
                     <p class="text-gray text-break">To be the first one to walk with the world subcribe us to get the latest information.</p>
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-8" data-aos="fade-left">
                     <div class="form-holder">
                         <form action="{% url 'email-list-signup' %}" method="POST">
                             {% csrf_token %}

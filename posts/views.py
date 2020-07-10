@@ -21,7 +21,7 @@ def get_author(user):
     return None
 
 def cat_detail(request,cat):
-        cat_list = Post.objects.filter(categories__title=cat)
+        cat_list = Post.objects.filter(categories__cat_url=cat)
         context={
             "cat_list":cat_list,
         }
@@ -139,6 +139,7 @@ class CatDetailView(ListView):
     def get_context_data(self, **kwargs):
         category_count = get_category_count()
         most_recent = Post.objects.order_by('-timestamp')[:3]
+        print("Most : ",most_recent)
         # context = super().get_context_data(**kwargs)
         # print("context kwargs : ",context)
         # context['most_recent'] = most_recent

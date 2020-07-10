@@ -3507,10 +3507,121 @@ textarea.input100 {
 }
 
 
+/* about me at index */
+.know_me{
+	border-radius: 30%;
+}
+.know_me a{
+	color: #fff;
+}
+
+
+/* css for category */
 
 
 
-
-
-
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;1,100;1,300;1,400&display=swap');
+ 
+.categoryCat {
+  display: block;
+  margin: auto;
+  width: 320px;
+  height: auto;
+  border: 1px solid #e6e6e6;
+ 
+    border-top-left-radius: 5%;
+    border-top-right-radius: 5%;
+}
+ 
+.categoryCat-title {
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+  font-size: 1.2em;
+  font-weight: 300;
+}
+ 
+.categoryCat-description {
+  position: relative;
+  display: block;
+  padding-bottom: 5%;
+  width: 75%;
+  margin: auto;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+  font-size: 0.8em;
+  font-weight: 300;
+}
+ 
+.categoryCat-image {
+  position: relative;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+ 
+    border-top-left-radius: 5%;
+    border-top-right-radius: 5%;
+}
+ 
+hr.styled-hr {
+  border: 0;
+  width: 25%;
+  height: 1px;
+  background-image: -webkit-linear-gradient(left, #f0f0f0, #e6e6e6, #f0f0f0);
+  background-image: -moz-linear-gradient(left, #f0f0f0, #e6e6e6, #f0f0f0);
+  background-image: -ms-linear-gradient(left, #f0f0f0, #e6e6e6, #f0f0f0);
+  background-image: -o-linear-gradient(left, #f0f0f0, #e6e6e6, #f0f0f0);
+ 
+}
+ 
+ 
+.cate_colors {
+  position: relative;
+  display: block;
+  font-size: 2.6em;
+  text-align: center;
+}
+ 
+.color1 {
+  color: #1f4068;
+}
+.color2 {
+  color: #6f0000;
+}
+.color3 {
+  color: #00263b;
+}
+.color4 {
+  color: #00a1ab;
+}
+.color5 {
+  color: #00c2ad;
+}
+.color6 {
+  color: #00b1df;
+}
+.color7 {
+  color: #00f1ce;
+}
+.color8 {
+  color: #00d6a7;
+}
+ 
+.buton {
+  position: relative;
+  cursor: pointer;
+  display: block;
+  margin: auto;
+  color: #333;
+  font-weight: 300;
+  font-size: 0.8em;
+  font-family: 'Roboto', sans-serif;
+  background: transparent;
+  border: 1px solid #e6e6e6;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  border-radius:12%;
+}
